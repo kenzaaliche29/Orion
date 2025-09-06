@@ -1,0 +1,164 @@
+/* Orion UI Theme System */
+
+:root {
+  /* Light Theme - Default */
+  --orion-bg-primary: #ffffff;
+  --orion-bg-secondary: #f8fafc;
+  --orion-bg-tertiary: #f1f5f9;
+  --orion-bg-card: #ffffff;
+  --orion-bg-hover: rgba(59, 130, 246, 0.05);
+  
+  --orion-text-primary: #1f2937;
+  --orion-text-secondary: #6b7280;
+  --orion-text-tertiary: #9ca3af;
+  --orion-text-accent: #3b82f6;
+  
+  --orion-border-primary: #e5e7eb;
+  --orion-border-secondary: #d1d5db;
+  --orion-border-accent: #3b82f6;
+  
+  --orion-shadow-sm: 0 1px 2px 0 rgba(0, 0, 0, 0.05);
+  --orion-shadow-md: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
+  --orion-shadow-lg: 0 10px 15px -3px rgba(0, 0, 0, 0.1);
+  --orion-shadow-xl: 0 20px 25px -5px rgba(0, 0, 0, 0.1);
+  
+  /* Brand Colors */
+  --orion-primary: #3b82f6;
+  --orion-primary-light: #60a5fa;
+  --orion-primary-dark: #1d4ed8;
+  
+  --orion-secondary: #8b5cf6;
+  --orion-secondary-light: #a78bfa;
+  --orion-secondary-dark: #7c3aed;
+  
+  /* Semantic Colors */
+  --orion-success: #10b981;
+  --orion-warning: #f59e0b;
+  --orion-error: #ef4444;
+  --orion-info: #06b6d4;
+  
+  /* Technology Colors */
+  --orion-tech-framework: #3b82f6;
+  --orion-tech-language: #10b981;
+  --orion-tech-database: #8b5cf6;
+  --orion-tech-tool: #f59e0b;
+  --orion-tech-frontend: #ef4444;
+}
+
+/* Dark Theme */
+[data-theme="dark"],
+.dark-theme {
+  --orion-bg-primary: #0f172a;
+  --orion-bg-secondary: #1e293b;
+  --orion-bg-tertiary: #334155;
+  --orion-bg-card: #1e293b;
+  --orion-bg-hover: rgba(59, 130, 246, 0.1);
+  
+  --orion-text-primary: #f1f5f9;
+  --orion-text-secondary: #cbd5e1;
+  --orion-text-tertiary: #94a3b8;
+  --orion-text-accent: #60a5fa;
+  
+  --orion-border-primary: #334155;
+  --orion-border-secondary: #475569;
+  --orion-border-accent: #60a5fa;
+  
+  --orion-shadow-sm: 0 1px 2px 0 rgba(0, 0, 0, 0.3);
+  --orion-shadow-md: 0 4px 6px -1px rgba(0, 0, 0, 0.4);
+  --orion-shadow-lg: 0 10px 15px -3px rgba(0, 0, 0, 0.4);
+  --orion-shadow-xl: 0 20px 25px -5px rgba(0, 0, 0, 0.4);
+  
+  /* Brand Colors - Adjusted for dark theme */
+  --orion-primary: #60a5fa;
+  --orion-primary-light: #93c5fd;
+  --orion-primary-dark: #3b82f6;
+  
+  --orion-secondary: #a78bfa;
+  --orion-secondary-light: #c4b5fd;
+  --orion-secondary-dark: #8b5cf6;
+  
+  /* Semantic Colors - Adjusted for dark theme */
+  --orion-success: #34d399;
+  --orion-warning: #fbbf24;
+  --orion-error: #f87171;
+  --orion-info: #22d3ee;
+}
+
+/* Smooth transitions for theme switching */
+* {
+  transition: background-color 0.3s ease, color 0.3s ease, border-color 0.3s ease, box-shadow 0.3s ease;
+}
+
+/* Base body styles */
+body {
+  background-color: var(--orion-bg-primary);
+  color: var(--orion-text-primary);
+  transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+/* Orion UI Components Base Styles */
+.orion-card {
+  background-color: var(--orion-bg-card);
+  border: 1px solid var(--orion-border-primary);
+  box-shadow: var(--orion-shadow-md);
+}
+
+.orion-button {
+  background-color: var(--orion-primary);
+  color: white;
+  border: 1px solid var(--orion-primary);
+  transition: all 0.2s ease;
+}
+
+.orion-button:hover {
+  background-color: var(--orion-primary-dark);
+  transform: translateY(-1px);
+  box-shadow: var(--orion-shadow-lg);
+}
+
+.orion-button--secondary {
+  background-color: transparent;
+  color: var(--orion-text-primary);
+  border: 1px solid var(--orion-border-primary);
+}
+
+.orion-button--secondary:hover {
+  background-color: var(--orion-bg-hover);
+  border-color: var(--orion-border-accent);
+}
+
+/* Theme Toggle Button Styles */
+.theme-toggle {
+  position: fixed;
+  top: 2rem;
+  right: 2rem;
+  z-index: 1000;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.75rem 1rem;
+  background-color: var(--orion-bg-card);
+  border: 1px solid var(--orion-border-primary);
+  border-radius: 12px;
+  box-shadow: var(--orion-shadow-lg);
+  cursor: pointer;
+  transition: all 0.3s ease;
+  font-size: 0.875rem;
+  font-weight: 500;
+  color: var(--orion-text-primary);
+}
+
+.theme-toggle:hover {
+  transform: translateY(-2px);
+  box-shadow: var(--orion-shadow-xl);
+  border-color: var(--orion-border-accent);
+}
+
+.theme-toggle-icon {
+  font-size: 1.25rem;
+  transition: transform 0.3s ease;
+}
+
+.theme-toggle:hover .theme-toggle-icon {
+  transform: rotate(180deg);
+}
