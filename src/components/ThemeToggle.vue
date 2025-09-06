@@ -13,7 +13,7 @@
 <script setup lang="ts">
 import { useTheme } from '../composables/useTheme'
 
-const { isDark, themeIcon, themeLabel, toggleTheme } = useTheme()
+const { themeIcon, themeLabel, toggleTheme } = useTheme()
 </script>
 
 <style scoped>

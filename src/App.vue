@@ -1,5 +1,4 @@
 <script setup lang="ts">
-import { onMounted } from 'vue'
 import OrionStatsCard from './components/OrionStatsCard.vue'
 import ThemeToggle from './components/ThemeToggle.vue'
 
