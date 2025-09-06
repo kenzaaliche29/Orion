@@ -125,6 +125,24 @@ const technologies = ref<Technology[]>([
     icon: '🔸'
   },
   {
+    id: 'vue3',
+    name: 'Vue.js 3',
+    category: 'framework',
+    categoryLabel: 'Framework Frontend',
+    experience: 'Expérience avancée',
+    experienceLevel: 50,
+    icon: '💚'
+  },
+  {
+    id: 'react',
+    name: 'React',
+    category: 'framework',
+    categoryLabel: 'Framework Frontend',
+    experience: 'Expérience confirmée',
+    experienceLevel: 85,
+    icon: '⚛️'
+  },
+  {
     id: 'postgres',
     name: 'PostgreSQL',
     category: 'database',
@@ -222,6 +240,42 @@ const technologies = ref<Technology[]>([
     experience: 'Expérience confirmée',
     experienceLevel: 85,
     icon: '🅰️'
+  },
+  {
+    id: 'docker',
+    name: 'Docker',
+    category: 'tool',
+    categoryLabel: 'Containerisation',
+    experience: 'Expérience avancée',
+    experienceLevel: 87,
+    icon: '🐳'
+  },
+  {
+    id: 'kubernetes',
+    name: 'Kubernetes',
+    category: 'tool',
+    categoryLabel: 'Orchestration',
+    experience: 'Expérience intermédiaire',
+    experienceLevel: 75,
+    icon: '⚓'
+  },
+  {
+    id: 'aws',
+    name: 'AWS',
+    category: 'tool',
+    categoryLabel: 'Cloud Computing',
+    experience: 'Expérience confirmée',
+    experienceLevel: 82,
+    icon: '☁️'
+  },
+  {
+    id: 'azure',
+    name: 'Azure',
+    category: 'tool',
+    categoryLabel: 'Cloud Computing',
+    experience: 'Expérience avancée',
+    experienceLevel: 88,
+    icon: '📊'
   }
 ])
 
@@ -330,6 +384,39 @@ const professionalSkills = ref<ProfessionalSkill[]>([
       'Définition de standards de codage',
       'Formation aux bonnes pratiques'
     ]
+  },
+  {
+    title: 'DevOps & CI/CD',
+    description: 'Mise en place et maintenance de pipelines CI/CD, automatisation des déploiements.',
+    icon: '🔄',
+    details: [
+      'Configuration de pipelines Azure DevOps',
+      'Intégration continue avec GitHub Actions',
+      'Automatisation des tests et déploiements',
+      'Gestion des environnements cloud'
+    ]
+  },
+  {
+    title: 'Architecture Cloud',
+    description: 'Conception et implémentation de solutions cloud natives.',
+    icon: '☁️',
+    details: [
+      'Architecture microservices',
+      'Solutions serverless',
+      'Gestion des conteneurs',
+      'Haute disponibilité et scalabilité'
+    ]
+  },
+  {
+    title: 'Sécurité Applicative',
+    description: 'Implémentation des meilleures pratiques de sécurité.',
+    icon: '🔒',
+    details: [
+      'Authentication & Authorization',
+      'Protection contre les vulnérabilités OWASP',
+      'Gestion des secrets',
+      'Audit de sécurité'
+    ]
   }
 ])
 
@@ -352,6 +439,26 @@ const architecturePractices = ref<ArchitecturePractice[]>([
   {
     name: 'Design Patterns',
     description: 'Utilisation appropriée des patterns de conception',
+    icon: '🔄'
+  },
+  {
+    name: 'TDD & BDD',
+    description: 'Développement guidé par les tests et le comportement',
+    icon: '🎯'
+  },
+  {
+    name: 'DDD',
+    description: 'Domain-Driven Design pour des solutions métier complexes',
+    icon: '🏢'
+  },
+  {
+    name: 'Event Sourcing',
+    description: 'Architecture événementielle pour la traçabilité et la résilience',
+    icon: '📊'
+  },
+  {
+    name: 'Microservices',
+    description: 'Conception de systèmes distribués scalables',
     icon: '🔄'
   }
 ])
