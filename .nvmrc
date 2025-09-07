@@ -1,0 +1,2 @@
+# This file is used by Nixpacks to detect the correct Node.js version
+NODE_VERSION=20.19.0
