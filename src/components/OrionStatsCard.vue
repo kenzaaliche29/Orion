@@ -124,32 +124,33 @@ const technologies = ref<Technology[]>([
     experienceLevel: 95,
     icon: '🔸'
   },
-  {
-    id: 'vue3',
-    name: 'Vue.js 3',
-    category: 'framework',
-    categoryLabel: 'Framework Frontend',
-    experience: 'Expérience avancée',
-    experienceLevel: 50,
-    icon: '💚'
-  },
-  {
-    id: 'react',
-    name: 'React',
-    category: 'framework',
-    categoryLabel: 'Framework Frontend',
-    experience: 'Expérience confirmée',
-    experienceLevel: 85,
-    icon: '⚛️'
-  },
+  
+  // {
+  //   id: 'react',
+  //   name: 'React',
+  //   category: 'framework',
+  //   categoryLabel: 'Framework Frontend',
+  //   experience: 'Expérience confirmée',
+  //   experienceLevel: 85,
+  //   icon: '⚛️'
+  // },
   {
     id: 'postgres',
     name: 'PostgreSQL',
     category: 'database',
     categoryLabel: 'Base de données',
     experience: 'Expérience confirmée',
-    experienceLevel: 85,
+    experienceLevel: 70,
     icon: '🐘'
+  },
+  {
+    id: 'vue3',
+    name: 'Vue.js 3',
+    category: 'framework',
+    categoryLabel: 'Framework Frontend',
+    experience: 'Expérience avancée',
+    experienceLevel: 40,
+    icon: '💚'
   },
   {
     id: 'sqlserver',
@@ -166,7 +167,7 @@ const technologies = ref<Technology[]>([
     category: 'language',
     categoryLabel: 'Langage de programmation',
     experience: 'Expérience avancée',
-    experienceLevel: 88,
+    experienceLevel: 75,
     icon: '📘'
   },
   {
@@ -247,34 +248,18 @@ const technologies = ref<Technology[]>([
     category: 'tool',
     categoryLabel: 'Containerisation',
     experience: 'Expérience avancée',
-    experienceLevel: 87,
+    experienceLevel: 40,
     icon: '🐳'
   },
-  {
-    id: 'kubernetes',
-    name: 'Kubernetes',
-    category: 'tool',
-    categoryLabel: 'Orchestration',
-    experience: 'Expérience intermédiaire',
-    experienceLevel: 75,
-    icon: '⚓'
-  },
-  {
-    id: 'aws',
-    name: 'AWS',
-    category: 'tool',
-    categoryLabel: 'Cloud Computing',
-    experience: 'Expérience confirmée',
-    experienceLevel: 82,
-    icon: '☁️'
-  },
+  
+  
   {
     id: 'azure',
     name: 'Azure',
     category: 'tool',
     categoryLabel: 'Cloud Computing',
     experience: 'Expérience avancée',
-    experienceLevel: 88,
+    experienceLevel: 33,
     icon: '📊'
   }
 ])
@@ -385,28 +370,28 @@ const professionalSkills = ref<ProfessionalSkill[]>([
       'Formation aux bonnes pratiques'
     ]
   },
-  {
-    title: 'DevOps & CI/CD',
-    description: 'Mise en place et maintenance de pipelines CI/CD, automatisation des déploiements.',
-    icon: '🔄',
-    details: [
-      'Configuration de pipelines Azure DevOps',
-      'Intégration continue avec GitHub Actions',
-      'Automatisation des tests et déploiements',
-      'Gestion des environnements cloud'
-    ]
-  },
-  {
-    title: 'Architecture Cloud',
-    description: 'Conception et implémentation de solutions cloud natives.',
-    icon: '☁️',
-    details: [
-      'Architecture microservices',
-      'Solutions serverless',
-      'Gestion des conteneurs',
-      'Haute disponibilité et scalabilité'
-    ]
-  },
+  // {
+  //   title: 'DevOps & CI/CD',
+  //   description: 'Mise en place et maintenance de pipelines CI/CD, automatisation des déploiements.',
+  //   icon: '🔄',
+  //   details: [
+  //     'Configuration de pipelines Azure DevOps',
+  //     'Intégration continue avec GitHub Actions',
+  //     'Automatisation des tests et déploiements',
+  //     'Gestion des environnements cloud'
+  //   ]
+  // },
+  // {
+  //   title: 'Architecture Cloud',
+  //   description: 'Conception et implémentation de solutions cloud natives.',
+  //   icon: '☁️',
+  //   details: [
+  //     'Architecture microservices',
+  //     'Solutions serverless',
+  //     'Gestion des conteneurs',
+  //     'Haute disponibilité et scalabilité'
+  //   ]
+  // },
   {
     title: 'Sécurité Applicative',
     description: 'Implémentation des meilleures pratiques de sécurité.',
@@ -441,21 +426,21 @@ const architecturePractices = ref<ArchitecturePractice[]>([
     description: 'Utilisation appropriée des patterns de conception',
     icon: '🔄'
   },
-  {
-    name: 'TDD & BDD',
-    description: 'Développement guidé par les tests et le comportement',
-    icon: '🎯'
-  },
+  // {
+  //   name: 'TDD & BDD',
+  //   description: 'Développement guidé par les tests et le comportement',
+  //   icon: '🎯'
+  // },
   {
     name: 'DDD',
     description: 'Domain-Driven Design pour des solutions métier complexes',
     icon: '🏢'
   },
-  {
-    name: 'Event Sourcing',
-    description: 'Architecture événementielle pour la traçabilité et la résilience',
-    icon: '📊'
-  },
+  // {
+  //   name: 'Event Sourcing',
+  //   description: 'Architecture événementielle pour la traçabilité et la résilience',
+  //   icon: '📊'
+  // },
   {
     name: 'Microservices',
     description: 'Conception de systèmes distribués scalables',
