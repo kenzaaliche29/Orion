@@ -20,8 +20,8 @@ FROM node:20-alpine
 
 WORKDIR /app
 
-# Install serve to run the static files
-RUN npm install -g serve
+# Install curl for healthcheck and serve for serving static files
+RUN apk add --no-cache curl && npm install -g serve
 
 # Copy built files from builder
 COPY --from=builder /app/dist /app/dist
@@ -29,9 +29,9 @@ COPY --from=builder /app/dist /app/dist
 # Expose port 3000 (as configured in Coolify)
 EXPOSE 3000
 
-# Health check
-HEALTHCHECK --interval=30s --timeout=3s --start-period=5s --retries=3 \
-  CMD node -e "require('http').get('http://localhost:3000/', (r) => {if (r.statusCode !== 200) throw new Error(r.statusCode)})"
+# Health check using curl
+HEALTHCHECK --interval=30s --timeout=10s --start-period=10s --retries=3 \
+  CMD curl -f http://localhost:3000/ || exit 1
 
 # Serve the application on port 3000 with SPA support
 CMD ["serve", "-s", "dist", "-l", "3000", "--no-port-switching"]
