@@ -171,25 +171,25 @@ a {
   .experience-card {
     background: var(--orion-card-bg-dark, #23272f);
     color: var(--orion-text-dark, #e0e0e0);
-      border-radius: 1.2rem;
-      box-shadow: 0 4px 16px rgba(40, 60, 90, 0.10);
-      padding: 2rem 1.5rem 1.5rem 1.5rem;
-      position: relative;
-      overflow: hidden;
-      border: 1px solid var(--orion-border, #e0e4ea);
-      transition: box-shadow 0.2s, border-color 0.2s;
-    }
+    border-radius: 1.2rem;
+    box-shadow: 0 4px 16px rgba(40, 60, 90, 0.10);
+    padding: 2rem 1.5rem 1.5rem 1.5rem;
+    position: relative;
+    overflow: hidden;
+    border: 1px solid var(--orion-border, #e0e4ea);
+    transition: box-shadow 0.2s, border-color 0.2s;
+  }
 
-    .experience-card::before {
-      content: "💼";
-      position: absolute;
-      top: 1rem;
-      right: 1rem;
-      font-size: 2rem;
-      opacity: 0.12;
-      pointer-events: none;
-    }
-
+  .experience-card::before {
+    content: "💼";
+    position: absolute;
+    top: 1rem;
+    right: 1rem;
+    font-size: 2rem;
+    opacity: 0.12;
+    pointer-events: none;
+  }
+}
 
 .experience-card:hover {
   /* Aucun effet de zoom ou d'ombre supplémentaire au survol */
@@ -204,10 +204,11 @@ a {
   letter-spacing: 0.02em;
 }
 
-    .experience-card ul li {
-      margin-bottom: 0.3rem;
-      line-height: 1.5;
-      list-style: disc inside;
+.experience-card ul li {
+  margin-bottom: 0.3rem;
+  line-height: 1.5;
+  list-style: disc inside;
+}
 
 .experience-card p {
   margin: 0.2rem 0;

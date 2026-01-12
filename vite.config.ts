@@ -18,6 +18,6 @@ export default defineConfig({
       }
     }
   },
-  // Ensure proper base path for production
-  base: './',
+  // Use absolute path for production
+  base: '/',
 })
