@@ -1,7 +1,7 @@
 import { createApp } from 'vue'
 import OrionUI from '@orion.ui/orion'
-// TODO: CSS import is broken due to package export issues
-// import '@orion.ui/orion/dist/orion.css'
+// Import Orion UI styles from assets (copied during build)
+import './assets/orion.css'
 import './style.css'
 import './styles/orion-themes.css' // Import global du système de thème
 import App from './App.vue'
