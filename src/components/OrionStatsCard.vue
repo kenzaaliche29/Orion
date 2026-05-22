@@ -1059,6 +1059,95 @@ const handleImageError = (event: Event) => {
     grid-template-columns: 1fr;
   }
 }
+
+/* ----------- Améliorations pour mobile <600px ----------- */
+@media (max-width: 600px) {
+  .orion-profile-container {
+    padding: 0.5rem;
+  }
+  .profile-title {
+    font-size: 1.3rem;
+    margin-bottom: 1.5rem;
+  }
+  .profile-intro-section {
+    padding: 1rem 0.5rem;
+    gap: 1rem;
+    margin-bottom: 1.5rem;
+  }
+  .profile-image-container {
+    width: 120px;
+    height: 120px;
+    padding: 2px;
+  }
+  .description-text {
+    font-size: 1rem;
+    line-height: 1.5;
+  }
+  .section {
+    margin-bottom: 2rem;
+  }
+  .section-accordion-toggle {
+    padding: 0.5rem 0.7rem;
+    font-size: 1rem;
+    margin-bottom: 1rem;
+  }
+  .section-title {
+    font-size: 1.1rem;
+    gap: 0.3rem;
+  }
+  .tech-grid,
+  .skills-grid,
+  .practices-grid {
+    padding-left: 0;
+    padding-right: 0;
+    gap: 0.7rem;
+  }
+  .tech-card,
+  .skill-card,
+  .practice-card {
+    padding: 0.7rem 0.5rem;
+    font-size: 0.95rem;
+    border-radius: 10px;
+    margin-bottom: 0.7rem;
+  }
+  .tech-icon,
+  .skill-icon,
+  .practice-icon {
+    font-size: 1.1rem;
+  }
+  .tech-name,
+  .practice-name {
+    font-size: 1rem;
+  }
+  .tech-category {
+    font-size: 0.8rem;
+  }
+  .experience-cards,
+  .projects-list {
+    flex-direction: column;
+    gap: 1rem;
+    padding-left: 0;
+    padding-right: 0;
+  }
+  .experience-card,
+  .project-card {
+    min-width: 0;
+    max-width: 100%;
+    width: 100%;
+    padding: 0.7rem 0.5rem;
+    border-radius: 10px;
+    font-size: 0.95rem;
+  }
+  .project-title {
+    font-size: 1rem;
+  }
+  .project-logo {
+    max-height: 30px;
+  }
+  .project-desc {
+    font-size: 0.75rem;
+  }
+}
 </style>
 
 <style scoped>
