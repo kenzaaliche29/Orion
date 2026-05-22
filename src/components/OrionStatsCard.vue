@@ -1,6 +1,6 @@
 <template>
   <div class="orion-profile-container">
-    <h2 class="profile-title">Profil Développeur Full-Stack</h2>
+    <h2 class="profile-title"> Développeuse Full-Stack</h2>
     
     <!-- Profile Section with Image and Description -->
     <div class="profile-intro-section">
@@ -15,82 +15,143 @@
       
       <div class="profile-description">
         <p class="description-text">
-          Determined, passionate, and dedicated software engineer with over 8 years of experience in designing, developing, and testing software solutions. Skilled in designing, maintaining, and enhancing web applications, as well as adding new modules to existing systems. Versatile and solution-oriented, with a clear and effective communication style, always ready to deliver innovative results.
+         
+           Déterminée et passionnée avec plus de 8 ans d’expérience en conception, développement et 
+          test de solutions logicielles, je suis une développeuse full-stack polyvalente. 
+          Je conçois, maintiens et améliore des applications web tout en développant de nouveaux modules
+           pour des systèmes existants. En parallèle, je forme des débutants en ligne sur la bureautique 
+           et les bases de la programmation logicielle, partageant mes 
+           connaissances et mon expertise pour aider les autres à progresser dans le domaine technologique.
+        
         </p>
       </div>
     </div>
     
-    <!-- Section Expérience Technique -->
-    <div class="section">
-      <h3 class="section-title">💻 Expérience Technique</h3>
-      <div class="tech-grid">
-        <div 
-          v-for="(tech, index) in technologies" 
-          :key="tech.id"
-          class="tech-card"
-          :class="'tech-card--' + tech.category"
-          @click="animateProgress(index)"
-        >
-          <div class="tech-icon">{{ tech.icon }}</div>
-          <div class="tech-name">{{ tech.name }}</div>
-          <div class="tech-category">{{ tech.categoryLabel }}</div>
-          <div class="tech-experience">
-            <div class="experience-bar">
-              <div 
-                class="experience-fill" 
-                :style="{ width: progressWidths[index] + '%' }"
-              ></div>
+    <!-- Section Expérience Technique (Accordéon) -->
+    <div ref="techSectionRef" class="section accordion-section">
+      <button
+        ref="techSectionButtonRef"
+        type="button"
+        class="section-accordion-toggle"
+        :aria-expanded="isTechSectionOpen"
+        @click="toggleTechSection"
+      >
+        <h3 class="section-title">💻 Expérience Technique</h3>
+        <span class="accordion-icon" :class="{ 'is-open': isTechSectionOpen }">⌄</span>
+      </button>
+
+      <transition name="accordion-slide">
+        <div v-show="isTechSectionOpen" class="tech-grid">
+          <div 
+            v-for="(tech, index) in technologies" 
+            :key="tech.id"
+            class="tech-card"
+            :class="'tech-card--' + tech.category"
+            @click="animateProgress(index)"
+          >
+            <div class="tech-icon">{{ tech.icon }}</div>
+            <div class="tech-name">{{ tech.name }}</div>
+            <div class="tech-category">{{ tech.categoryLabel }}</div>
+            <div class="tech-experience">
+              <div class="experience-bar">
+                <div 
+                  class="experience-fill" 
+                  :style="{ width: progressWidths[index] + '%' }"
+                ></div>
+              </div>
+              <span class="experience-text">{{ tech.experience }}</span>
             </div>
-            <span class="experience-text">{{ tech.experience }}</span>
           </div>
         </div>
-      </div>
+      </transition>
     </div>
 
-    <!-- Section Compétences -->
-    <div class="section">
-      <h3 class="section-title">🚀 Compétences Professionnelles</h3>
-      <div class="skills-grid">
-        <div 
-          v-for="skill in professionalSkills" 
-          :key="skill.title"
-          class="skill-card col-lg-4 col-md-6 col-12"
-          @mouseenter="highlightSkill(skill.title)"
-          @mouseleave="resetHighlight"
-        >
-          <div class="skill-header">
-            <span class="skill-icon">{{ skill.icon }}</span>
-            <h4>{{ skill.title }}</h4>
-          </div>
-          <p>{{ skill.description }}</p>
-          <div class="skill-details" v-if="skill.details">
-            <ul>
-              <li v-for="detail in skill.details" :key="detail">{{ detail }}</li>
-            </ul>
+    <!-- Section Compétences (Accordéon) -->
+    <div ref="skillsSectionRef" class="section accordion-section">
+      <button
+        ref="skillsSectionButtonRef"
+        type="button"
+        class="section-accordion-toggle"
+        :aria-expanded="isSkillsSectionOpen"
+        @click="toggleSkillsSection"
+      >
+        <h3 class="section-title">🚀 Compétences Professionnelles</h3>
+        <span class="accordion-icon" :class="{ 'is-open': isSkillsSectionOpen }">⌄</span>
+      </button>
+
+      <transition name="accordion-slide">
+        <div v-show="isSkillsSectionOpen" class="skills-grid">
+          <div 
+            v-for="skill in professionalSkills" 
+            :key="skill.title"
+            class="skill-card col-lg-4 col-md-6 col-12"
+            @mouseenter="highlightSkill(skill.title)"
+            @mouseleave="resetHighlight"
+          >
+            <div class="skill-header">
+              <span class="skill-icon">{{ skill.icon }}</span>
+              <h4>{{ skill.title }}</h4>
+            </div>
+            <p>{{ skill.description }}</p>
+            <div class="skill-details" v-if="skill.details">
+              <ul>
+                <li v-for="detail in skill.details" :key="detail">{{ detail }}</li>
+              </ul>
+            </div>
           </div>
         </div>
-      </div>
+      </transition>
     </div>
 
-    <!-- Section Architecture & Bonnes Pratiques -->
-    <div class="section">
-      <h3 class="section-title">🏗️ Architecture & Bonnes Pratiques</h3>
-      <div class="practices-grid">
-        <div 
-          v-for="practice in architecturePractices" 
-          :key="practice.name"
-          class="practice-card col-md-6 col-lg-3 col-12"
-        >
-          <div class="practice-icon">{{ practice.icon }}</div>
-          <div class="practice-name">{{ practice.name }}</div>
-          <div class="practice-description">{{ practice.description }}</div>
+    <!-- Section Architecture & Bonnes Pratiques (Accordéon) -->
+    <div ref="practicesSectionRef" class="section accordion-section">
+      <button
+        ref="practicesSectionButtonRef"
+        type="button"
+        class="section-accordion-toggle"
+        :aria-expanded="isPracticesSectionOpen"
+        @click="togglePracticesSection"
+      >
+        <h3 class="section-title">🏗️ Architecture & Bonnes Pratiques</h3>
+        <span class="accordion-icon" :class="{ 'is-open': isPracticesSectionOpen }">⌄</span>
+      </button>
+
+      <transition name="accordion-slide">
+        <div v-show="isPracticesSectionOpen" class="practices-grid">
+          <div 
+            v-for="practice in architecturePractices" 
+            :key="practice.name"
+            class="practice-card col-md-6 col-lg-3 col-12"
+          >
+            <div class="practice-icon">{{ practice.icon }}</div>
+            <div class="practice-name">{{ practice.name }}</div>
+            <div class="practice-description">{{ practice.description }}</div>
+          </div>
         </div>
-      </div>
+      </transition>
     </div>
-      <!-- Section Expérience Professionnelle -->
-      <section class="experience-section orion-adaptive-section">
-        <h2><span style="font-size:1.7rem;vertical-align:middle;margin-right:0.5rem;">💼</span>Expérience professionnelle</h2>
-        <div class="experience-cards">
+      
+    
+    
+    
+    <!-- Section Expérience Professionnelle (Accordéon) -->
+      <div ref="experienceSectionRef" class="section accordion-section">
+      
+      
+      <!-- <section class="experience-section orion-adaptive-section accordion-section"> -->
+        <button
+          ref="experienceSectionButtonRef"
+          type="button"
+          class="section-accordion-toggle experience-accordion-toggle"
+          :aria-expanded="isExperienceSectionOpen"
+          @click="toggleExperienceSection"
+        >
+           <h3 class="section-title">💼 Expérience professionnelle</h3>
+          <span class="accordion-icon" :class="{ 'is-open': isExperienceSectionOpen }">⌄</span>
+        </button>
+
+        <transition name="accordion-slide">
+          <div v-show="isExperienceSectionOpen" class="experience-cards">
           <div class="experience-card">
             <h3>Freelance</h3>
             <p><strong>janvier 2025 - jusqu’à présent</strong></p>
@@ -120,13 +181,26 @@
               <li>Travailler avec des consultants externes et des éditeurs de logiciels pour le développement et le déploiement de solutions métiers</li>
             </ul>
           </div>
-        </div>
-      </section>
+          </div>
+        </transition>
+      <!-- </section> -->
+       </div>
 
-      <!-- Section Derniers Projets Réalisés -->
-      <section class="projects-section orion-adaptive-section">
-        <h2 class="projects-title" style="color: var(--orion-text-primary);"><span class="projects-icon">🚀</span>Derniers projets réalisés</h2>
-        <div class="projects-list">
+      <!-- Section Derniers Projets Réalisés (Accordéon) -->
+      <div ref="projectsSectionRef" class="section accordion-section">
+        <button
+          ref="projectsSectionButtonRef"
+          type="button"
+          class="section-accordion-toggle"
+          :aria-expanded="isProjectsSectionOpen"
+          @click="toggleProjectsSection"
+        >
+          <h3 class="section-title">🚀 Les derniers projets réalisés</h3>
+          <span class="accordion-icon" :class="{ 'is-open': isProjectsSectionOpen }">⌄</span>
+        </button>
+
+        <transition name="accordion-slide">
+          <div v-show="isProjectsSectionOpen" class="projects-list">
           <div class="project-card tarahoum-card">
             <div class="project-logo-wrapper">
               <img src="../assets/tarahoum.png" alt="Logo Tarhoum" class="project-logo" />
@@ -142,33 +216,15 @@
             <strong class="project-subtitle">Application de gestion de commandes</strong>
             <p class="project-desc">Conception et amélioration d’une application de gestion des commandes dédiée à Quintessence, marque engagée dans la production de miel pur et naturel. L’application permet d’optimiser le suivi des commandes ainsi que la gestion des clients et des produits.</p>
           </div>
-        </div>
-      </section>
-        <section class="projects-section orion-adaptive-section">
-          <h2 class="projects-title"><span class="projects-icon">🚀</span>Derniers projets réalisés</h2>
-          <div class="projects-list">
-            <div class="project-card tarahoum-card">
-              <div class="project-logo-wrapper">
-                <img src="../assets/tarahoum.png" alt="Logo Tarhoum" class="project-logo" />
-              </div>
-              <h3 class="project-title"><a href="https://dz.tarahoum.com/" target="_blank" rel="noopener noreferrer">Tarhoum</a></h3>
-              <p class="project-desc">Application affiche une liste des défunts avec l'emplacement de leurs tombes. Les utilisateurs peuvent ajouter d'autres défunts à la liste en fournissant des informations détaillées et en capturant les coordonnées GPS pour aider les visiteurs à trouver facilement l'emplacement des tombes de leurs proches et à partager l'emplacement.</p>
-            </div>
-            <div class="project-card quintessence-card">
-              <div class="project-logo-wrapper">
-                <img src="../assets/quintessence.png" alt="Logo Quintessence" class="project-logo" />
-              </div>
-              <h3 class="project-title"><a href="https://miel.aliche.org/" target="_blank" rel="noopener noreferrer">Quintessence</a></h3>
-              <strong class="project-subtitle">Application de gestion de commandes</strong>
-              <p class="project-desc">Conception et amélioration d’une application de gestion des commandes dédiée à Quintessence, marque engagée dans la production de miel pur et naturel. L’application permet d’optimiser le suivi des commandes ainsi que la gestion des clients et des produits.</p>
-            </div>
           </div>
-        </section>
+        </transition>
+      </div>
+        
   </div>
 </template>
 
 <script setup lang="ts">
-import { ref, onMounted } from 'vue'
+import { ref, onMounted, nextTick } from 'vue'
 
 // Interface simple pour les technologies
 interface Technology {
@@ -315,6 +371,23 @@ const technologies = ref<Technology[]>([
 
 // État simple pour les animations
 const progressWidths = ref<number[]>([])
+const isTechSectionOpen = ref(false)
+const isSkillsSectionOpen = ref(false)
+const isPracticesSectionOpen = ref(false)
+const isExperienceSectionOpen = ref(false)
+const isProjectsSectionOpen = ref(false)
+
+const techSectionRef = ref<HTMLElement | null>(null)
+const skillsSectionRef = ref<HTMLElement | null>(null)
+const practicesSectionRef = ref<HTMLElement | null>(null)
+const experienceSectionRef = ref<HTMLElement | null>(null)
+const projectsSectionRef = ref<HTMLElement | null>(null)
+
+const techSectionButtonRef = ref<HTMLElement | null>(null)
+const skillsSectionButtonRef = ref<HTMLElement | null>(null)
+const practicesSectionButtonRef = ref<HTMLElement | null>(null)
+const experienceSectionButtonRef = ref<HTMLElement | null>(null)
+const projectsSectionButtonRef = ref<HTMLElement | null>(null)
 
 // Animation simplifiée
 const animateProgress = (index: number) => {
@@ -333,16 +406,97 @@ const animateProgress = (index: number) => {
   animate()
 }
 
-// Initialisation au montage
-onMounted(() => {
-  progressWidths.value = new Array(technologies.value.length).fill(0)
-  
-  // Animation initiale avec délai
+const animateAllTechProgress = () => {
   technologies.value.forEach((_, index) => {
     setTimeout(() => {
       animateProgress(index)
     }, index * 150)
   })
+}
+
+const closeAllSections = () => {
+  isTechSectionOpen.value = false
+  isSkillsSectionOpen.value = false
+  isPracticesSectionOpen.value = false
+  isExperienceSectionOpen.value = false
+  isProjectsSectionOpen.value = false
+}
+
+const scrollSectionToCenter = (sectionEl: HTMLElement | null) => {
+  if (!sectionEl) return
+  nextTick(() => {
+    sectionEl.scrollIntoView({
+      behavior: 'smooth',
+      block: 'center'
+    })
+  })
+}
+
+const scrollTitleIntoView = (titleEl: HTMLElement | null) => {
+  if (!titleEl) return
+  nextTick(() => {
+    titleEl.scrollIntoView({
+      behavior: 'smooth',
+      block: 'start'
+    })
+  })
+}
+
+const toggleTechSection = () => {
+  if (isTechSectionOpen.value) {
+    isTechSectionOpen.value = false
+  } else {
+    closeAllSections()
+    isTechSectionOpen.value = true
+    progressWidths.value = new Array(technologies.value.length).fill(0)
+    animateAllTechProgress()
+    scrollTitleIntoView(techSectionButtonRef.value)
+  }
+}
+
+const toggleSkillsSection = () => {
+  if (isSkillsSectionOpen.value) {
+    isSkillsSectionOpen.value = false
+  } else {
+    closeAllSections()
+    isSkillsSectionOpen.value = true
+    scrollTitleIntoView(skillsSectionButtonRef.value)
+  }
+}
+
+const togglePracticesSection = () => {
+  if (isPracticesSectionOpen.value) {
+    isPracticesSectionOpen.value = false
+  } else {
+    closeAllSections()
+    isPracticesSectionOpen.value = true
+    scrollTitleIntoView(practicesSectionButtonRef.value)
+  }
+}
+
+const toggleExperienceSection = () => {
+  if (isExperienceSectionOpen.value) {
+    isExperienceSectionOpen.value = false
+  } else {
+    closeAllSections()
+    isExperienceSectionOpen.value = true
+    scrollTitleIntoView(experienceSectionButtonRef.value)
+  }
+}
+
+const toggleProjectsSection = () => {
+  if (isProjectsSectionOpen.value) {
+    isProjectsSectionOpen.value = false
+  } else {
+    closeAllSections()
+    isProjectsSectionOpen.value = true
+    scrollTitleIntoView(projectsSectionButtonRef.value)
+  }
+}
+
+// Initialisation au montage
+onMounted(() => {
+  progressWidths.value = new Array(technologies.value.length).fill(0)
 })
 
 interface ProfessionalSkill {
@@ -604,19 +758,73 @@ const handleImageError = (event: Event) => {
   font-size: 1.75rem;
   font-weight: 600;
   color: var(--orion-text-primary);
-  margin-bottom: 2rem;
+  margin: 0;
   display: flex;
   align-items: center;
   gap: 0.5rem;
 }
 
-/* Système de grille responsive avec 3 colonnes */
+.accordion-section {
+  margin-bottom: 1.5rem;
+  transition: all 0.3s ease;
+}
+
+.section-accordion-toggle {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  border: 1px solid var(--orion-border-primary);
+  border-radius: 12px;
+  padding: 0.75rem 1rem;
+  background: var(--orion-bg-secondary);
+  cursor: pointer;
+  margin-bottom: 1.5rem;
+  transition: all 0.2s ease;
+  scroll-margin-top: 1.5rem;
+}
+
+.section-accordion-toggle:hover {
+  border-color: var(--orion-border-accent);
+  background: var(--orion-bg-hover);
+}
+
+.section-accordion-toggle .section-title {
+  margin-bottom: 0;
+}
+
+.accordion-icon {
+  font-size: 1.25rem;
+  color: var(--orion-text-secondary);
+  transition: transform 0.25s ease;
+}
+
+.accordion-icon.is-open {
+  transform: rotate(180deg);
+}
+
+.accordion-slide-enter-active,
+.accordion-slide-leave-active {
+  transition: all 0.25s ease;
+  overflow: hidden;
+}
+
+.accordion-slide-enter-from,
+.accordion-slide-leave-to {
+  opacity: 0;
+  transform: translateY(-8px);
+}
+
 .tech-grid,
 .skills-grid,
 .practices-grid {
   display: grid;
   gap: 1.5rem;
   grid-template-columns: repeat(3, 1fr);
+  padding-left: 14rem;
+  padding-right: 14rem;
+  margin: 0 auto;
+  transition: all 0.3s ease;
 }
 
 /* Pour tablettes - 2 colonnes */
@@ -679,7 +887,7 @@ const handleImageError = (event: Event) => {
 .tech-card {
   background: var(--orion-bg-card);
   border-radius: 16px;
-  padding: 1.5rem;
+  padding: 1rem;
   box-shadow: var(--orion-shadow-md);
   cursor: pointer;
   transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
@@ -698,13 +906,13 @@ const handleImageError = (event: Event) => {
 }
 
 .tech-icon {
-  font-size: 2rem;
-  margin-bottom: 1rem;
+  font-size: 1.5rem;
+  margin-bottom: 0.75rem;
   display: inline-block;
 }
 
 .tech-name {
-  font-size: 1.25rem;
+  font-size: 1.1rem;
   font-weight: 700;
   color: var(--theme-color);
   margin-bottom: 0.25rem;
@@ -748,7 +956,7 @@ const handleImageError = (event: Event) => {
   background: var(--orion-bg-card);
   border: 1px solid var(--orion-border-primary);
   border-radius: 12px;
-  padding: 1.5rem;
+  padding: 1rem;
   transition: all 0.3s ease;
   margin-bottom: 1rem;
   box-shadow: var(--orion-shadow-sm);
@@ -763,25 +971,26 @@ const handleImageError = (event: Event) => {
 .skill-header {
   display: flex;
   align-items: center;
-  gap: 0.75rem;
-  margin-bottom: 1rem;
+  gap: 0.5rem;
+  margin-bottom: 0.75rem;
 }
 
 .skill-icon {
-  font-size: 1.5rem;
+  font-size: 1.25rem;
 }
 
 .skill-header h4 {
   margin: 0;
-  font-size: 1.25rem;
+  font-size: 1.1rem;
   font-weight: 600;
   color: var(--orion-text-primary);
 }
 
 .skill-card p {
   color: var(--orion-text-secondary);
-  line-height: 1.6;
-  margin-bottom: 1rem;
+  line-height: 1.5;
+  margin-bottom: 0.75rem;
+  font-size: 0.95rem;
 }
 
 .skill-details ul {
@@ -800,7 +1009,7 @@ const handleImageError = (event: Event) => {
   background: var(--orion-bg-card);
   border: 2px solid var(--orion-border-primary);
   border-radius: 12px;
-  padding: 1.5rem;
+  padding: 1rem;
   text-align: center;
   transition: all 0.3s ease;
   margin-bottom: 1rem;
@@ -814,21 +1023,21 @@ const handleImageError = (event: Event) => {
 }
 
 .practice-icon {
-  font-size: 2.5rem;
-  margin-bottom: 1rem;
+  font-size: 2rem;
+  margin-bottom: 0.75rem;
 }
 
 .practice-name {
-  font-size: 1.125rem;
+  font-size: 1rem;
   font-weight: 600;
   color: var(--orion-text-primary);
   margin-bottom: 0.5rem;
 }
 
 .practice-description {
-  font-size: 0.875rem;
+  font-size: 0.8rem;
   color: var(--orion-text-secondary);
-  line-height: 1.5;
+  line-height: 1.4;
 }
 
 @media (max-width: 768px) {
@@ -931,13 +1140,17 @@ const handleImageError = (event: Event) => {
   flex-wrap: wrap;
   gap: 2.5rem;
   justify-content: center;
+  padding-left: 4rem;
+  padding-right: 4rem;
+  margin: 0 auto;
+  transition: all 0.3s ease;
 }
 
 .project-card {
   background: var(--orion-bg-surface, #fff);
   border-radius: 20px;
   box-shadow: 0 10px 40px rgba(108, 99, 255, 0.08), 0 2px 8px rgba(0, 0, 0, 0.04);
-  padding: 2.5rem 2rem;
+  padding: 1.3rem 1.2rem;
   max-width: 450px;
   min-width: 300px;
   flex: 1 1 350px;
@@ -1069,10 +1282,10 @@ const handleImageError = (event: Event) => {
   display: flex;
   justify-content: center;
   align-items: center;
-  margin-bottom: 1.5rem;
-  min-height: 90px;
+  margin-bottom: 0.75rem;
+  min-height: 50px;
   position: relative;
-  padding: 1rem;
+  padding: 0.5rem;
   border-radius: 12px;
   background: linear-gradient(135deg, rgba(108, 99, 255, 0.05) 0%, rgba(245, 158, 11, 0.05) 100%);
   transition: all 0.3s ease;
@@ -1085,7 +1298,7 @@ const handleImageError = (event: Event) => {
 
 .project-logo {
   max-width: 100%;
-  max-height: 80px;
+  max-height: 45px;
   object-fit: contain;
   transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
   filter: drop-shadow(0 4px 8px rgba(0, 0, 0, 0.1));
@@ -1096,9 +1309,9 @@ const handleImageError = (event: Event) => {
   filter: drop-shadow(0 8px 16px rgba(108, 99, 255, 0.3));
 }
 .project-title {
-  font-size: 1.6rem;
+  font-size: 1.1rem;
   font-weight: 700;
-  margin: 1rem 0 0.8rem 0;
+  margin: 0.6rem 0 0.4rem 0;
   color: var(--orion-text-primary, #22223b);
   text-align: center;
   transition: all 0.3s ease;
@@ -1142,13 +1355,13 @@ const handleImageError = (event: Event) => {
 }
 
 .project-subtitle {
-  font-size: 1rem;
+  font-size: 0.75rem;
   color: #f59e0b;
-  margin-bottom: 0.8rem;
+  margin-bottom: 0.4rem;
   font-weight: 600;
   display: inline-block;
   text-align: center;
-  padding: 0.4rem 1rem;
+  padding: 0.2rem 0.6rem;
   background: rgba(245, 158, 11, 0.1);
   border-radius: 20px;
   transition: all 0.3s ease;
@@ -1161,10 +1374,10 @@ const handleImageError = (event: Event) => {
 }
 
 .project-desc {
-  font-size: 1rem;
-  line-height: 1.7;
+  font-size: 0.8rem;
+  line-height: 1.5;
   text-align: justify;
-  margin-top: 1rem;
+  margin-top: 0.5rem;
   color: inherit;
   opacity: 0.9;
   transition: opacity 0.3s ease;
@@ -1182,12 +1395,15 @@ const handleImageError = (event: Event) => {
   flex-wrap: wrap;
   gap: 2.5rem;
   justify-content: center;
+  padding-left: 4rem;
+  padding-right: 4rem;
+  margin: 0 auto;
 }
 .experience-card {
   background: var(--orion-bg-card, #fff);
   border-radius: 16px;
   box-shadow: 0 4px 24px rgba(108, 99, 255, 0.10);
-  padding: 2.2rem 1.5rem 1.5rem 1.5rem;
+  padding: 1.2rem 1rem 1rem 1rem;
   max-width: 410px;
   min-width: 270px;
   flex: 1 1 320px;
@@ -1208,18 +1424,18 @@ const handleImageError = (event: Event) => {
   transform: translateY(-8px) scale(1.03);
 }
 .experience-card h3 {
-  font-size: 1.35rem;
+  font-size: 1rem;
   font-weight: 700;
-  margin: 0.5rem 0 0.2rem 0;
+  margin: 0.3rem 0 0.15rem 0;
   color: var(--orion-text-primary, #3f3d56);
   text-align: center;
 }
 .experience-card p,
 .experience-card ul {
   color: var(--orion-text-secondary, #444);
-  font-size: 1.05rem;
+  font-size: 0.85rem;
   text-align: justify;
-  margin-top: 0.5rem;
+  margin-top: 0.3rem;
 }
 .experience-card a {
   color: inherit;
