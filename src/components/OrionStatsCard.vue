@@ -1,6 +1,6 @@
 <template>
   <div class="orion-profile-container">
-    <h2 class="profile-title"> Développeuse Full-Stack</h2>
+    <h2 class="profile-title">👩‍💻 Développeuse Full-Stack</h2>
     
     <!-- Profile Section with Image and Description -->
     <div class="profile-intro-section">
@@ -15,14 +15,9 @@
       
       <div class="profile-description">
         <p class="description-text">
-         
-           Déterminée et passionnée avec plus de 8 ans d’expérience en conception, développement et 
-          test de solutions logicielles, je suis une développeuse full-stack polyvalente. 
-          Je conçois, maintiens et améliore des applications web tout en développant de nouveaux modules
-           pour des systèmes existants. En parallèle, je forme des débutants en ligne sur la bureautique 
-           et les bases de la programmation logicielle, partageant mes 
-           connaissances et mon expertise pour aider les autres à progresser dans le domaine technologique.
-        
+          Passionnée par le développement web depuis 8 ans.<br>
+          J’accompagne la transformation digitale, conçois et améliore des applications modernes.<br>
+          J’aime partager mes connaissances et aider les débutants à progresser dans la tech.
         </p>
       </div>
     </div>
@@ -153,32 +148,38 @@
         <transition name="accordion-slide">
           <div v-show="isExperienceSectionOpen" class="experience-cards">
           <div class="experience-card">
-            <h3>Freelance</h3>
-            <p><strong>janvier 2025 - jusqu’à présent</strong></p>
-            <p>Développeuse full-stack</p>
-            <ul>
-              <li>Réalisation de nouvelles applications en utilisant .NET 8 (backend) et Angular (frontend)</li>
+            <h3 class="exp-company">🧑‍💻 Freelance</h3>
+            <div class="exp-meta">
+              <span class="exp-date">Jan. 2025 – Présent</span>
+              <span class="exp-role">Développeuse full-stack</span>
+            </div>
+            <ul class="exp-list">
+              <li>Applications sur-mesure avec .NET 8 (backend) & Angular (frontend)</li>
             </ul>
           </div>
           <div class="experience-card">
-            <h3><a href="https://itcomp-dz.com/" target="_blank" rel="noopener noreferrer" style="color:inherit;text-decoration:underline;">ITComp</a></h3>
-            <p><strong>Novembre 2023 - Novembre 2024</strong></p>
-            <p>Développeuse web</p>
-            <ul>
-              <li>Migration d’une ancienne solution à .NET 8.0</li>
-              <li>Ajout de nouvelles fonctionnalités aux solutions existantes</li>
-              <li>Réalisation de nouvelles applications</li>
+            <h3 class="exp-company"><a href="https://itcomp-dz.com/" target="_blank" rel="noopener noreferrer">ITComp</a></h3>
+            <div class="exp-meta">
+              <span class="exp-date">Nov. 2023 – Nov. 2024</span>
+              <span class="exp-role">Développeuse web</span>
+            </div>
+            <ul class="exp-list">
+              <li>Migration d’une solution vers .NET 8.0</li>
+              <li>Ajout de fonctionnalités et maintenance évolutive</li>
+              <li>Développement d’applications web métiers</li>
             </ul>
           </div>
           <div class="experience-card">
-            <h3><a href="https://nesda.dz/" target="_blank" rel="noopener noreferrer" style="color:inherit;text-decoration:underline;">NESDA (EX: ANADE)</a></h3>
-            <p><strong>Janvier 2017 - octobre 2023</strong></p>
-            <p>Développeuse full-stack</p>
-            <ul>
-              <li>Concevoir et mettre en œuvre les architectures applicatives</li>
-              <li>Participer à l'élaboration de projets à grande complexité</li>
-              <li>Participer à la transformation des applications monolithiques vers une architecture micro-services</li>
-              <li>Travailler avec des consultants externes et des éditeurs de logiciels pour le développement et le déploiement de solutions métiers</li>
+            <h3 class="exp-company"><a href="https://nesda.dz/" target="_blank" rel="noopener noreferrer">NESDA (EX: ANADE)</a></h3>
+            <div class="exp-meta">
+              <span class="exp-date">Jan. 2017 – Oct. 2023</span>
+              <span class="exp-role">Développeuse full-stack</span>
+            </div>
+            <ul class="exp-list">
+              <li>Conception et mise en œuvre d’architectures applicatives</li>
+              <li>Participation à des projets complexes</li>
+              <li>Transformation d’applications monolithiques en micro-services</li>
+              <li>Collaboration avec consultants et éditeurs pour le déploiement de solutions métiers</li>
             </ul>
           </div>
           </div>
@@ -227,6 +228,7 @@
 import { ref, onMounted, nextTick } from 'vue'
 
 // Interface simple pour les technologies
+
 interface Technology {
   id: string
   name: string
@@ -691,13 +693,15 @@ const handleImageError = (event: Event) => {
 
 .profile-title {
   text-align: center;
-  font-size: 2.5rem;
-  font-weight: 700;
-  margin-bottom: 3rem;
+  font-size: 2.3rem;
+  font-weight: 800;
+  margin-bottom: 2.2rem;
+  letter-spacing: 0.5px;
   background: linear-gradient(135deg, var(--orion-primary) 0%, var(--orion-secondary) 100%);
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
   background-clip: text;
+  text-shadow: 0 2px 8px rgba(108,99,255,0.10);
 }
 
 .profile-intro-section {
@@ -755,13 +759,15 @@ const handleImageError = (event: Event) => {
 }
 
 .section-title {
-  font-size: 1.75rem;
-  font-weight: 600;
-  color: var(--orion-text-primary);
+  font-size: 1.35rem;
+  font-weight: 700;
+  color: var(--orion-primary, #6c63ff);
   margin: 0;
   display: flex;
   align-items: center;
   gap: 0.5rem;
+  letter-spacing: 0.2px;
+  text-shadow: 0 1px 4px rgba(108,99,255,0.07);
 }
 
 .accordion-section {
@@ -774,14 +780,17 @@ const handleImageError = (event: Event) => {
   display: flex;
   align-items: center;
   justify-content: space-between;
-  border: 1px solid var(--orion-border-primary);
-  border-radius: 12px;
-  padding: 0.75rem 1rem;
+  border: 1.5px solid var(--orion-border-primary);
+  border-radius: 14px;
+  padding: 0.85rem 1.1rem;
   background: var(--orion-bg-secondary);
   cursor: pointer;
-  margin-bottom: 1.5rem;
-  transition: all 0.2s ease;
-  scroll-margin-top: 1.5rem;
+  margin-bottom: 1.2rem;
+  transition: all 0.2s;
+  scroll-margin-top: 1.2rem;
+  box-shadow: 0 2px 8px rgba(108,99,255,0.04);
+  font-weight: 600;
+  font-size: 1.08rem;
 }
 
 .section-accordion-toggle:hover {
@@ -1080,11 +1089,13 @@ const handleImageError = (event: Event) => {
     padding: 2px;
   }
   .description-text {
-    font-size: 1rem;
-    line-height: 1.5;
-  }
-  .section {
-    margin-bottom: 2rem;
+    font-size: 1.08rem;
+    color: var(--orion-text-secondary);
+    line-height: 1.6;
+    margin: 0;
+    text-align: center;
+    letter-spacing: 0.01em;
+    padding: 0.2rem 0.2rem 0.5rem 0.2rem;
   }
   .section-accordion-toggle {
     padding: 0.5rem 0.7rem;
@@ -1513,11 +1524,52 @@ const handleImageError = (event: Event) => {
   transform: translateY(-8px) scale(1.03);
 }
 .experience-card h3 {
-  font-size: 1rem;
+  font-size: 1.08rem;
   font-weight: 700;
   margin: 0.3rem 0 0.15rem 0;
-  color: var(--orion-text-primary, #3f3d56);
+  color: var(--orion-primary, #6c63ff);
   text-align: center;
+  letter-spacing: 0.02em;
+}
+
+.exp-company a {
+  color: var(--orion-primary, #6c63ff);
+  text-decoration: underline;
+  font-weight: 700;
+}
+
+.exp-meta {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.7rem;
+  justify-content: center;
+  align-items: center;
+  margin-bottom: 0.2rem;
+}
+.exp-date {
+  color: var(--orion-text-secondary, #8885b5);
+  font-size: 0.93rem;
+  font-weight: 600;
+  background: rgba(108,99,255,0.07);
+  border-radius: 8px;
+  padding: 0.1rem 0.5rem;
+}
+.exp-role {
+  color: var(--orion-text-primary, #3f3d56);
+  font-size: 0.93rem;
+  font-weight: 600;
+  background: rgba(245,158,11,0.07);
+  border-radius: 8px;
+  padding: 0.1rem 0.5rem;
+}
+.exp-list {
+  margin: 0.3rem 0 0 0;
+  padding-left: 1.1rem;
+}
+.exp-list li {
+  margin-bottom: 0.2rem;
+  font-size: 0.93rem;
+  line-height: 1.5;
 }
 .experience-card p,
 .experience-card ul {
